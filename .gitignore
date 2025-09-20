@@ -1,0 +1,48 @@
+# Ignore OS-specific and IDE-specific files
+.DS_Store
+.idea/
+.vscode/
+*.iml
+Thumbs.db
+
+# Ignore Java/Maven backend build artifacts
+# This prevents uploading compiled Java code
+/backend/target/
+*.log
+
+.# Ignore Node.js dependencies for ALL frontend projects
+# This is the most important rule to prevent the large file error
+node_modules/
+
+# Ignore Next.js (Web Frontend) specific build files
+/frontend/.next/
+/frontend/out/
+
+# Ignore React Native (Mobile App) specific build files
+/KrishiMitraMobileNew/ios/build/
+/KrishiMitraMobileNew/android/build/
+/KrishiMitraMobileNew/android/app/build/
+
+# Ignore environment files to keep your API keys secret
+.env
+.env.local
+.env.*.local
+
+# Ignore log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+```
+
+---
+### ### Step 3: Save and Proceed
+
+1.  Save the `.gitignore` file (`Cmd + S` or `Ctrl + S`).
+2.  Now you can go back to your terminal and run the final Git commands to push your project:
+
+    ```bash
+    git add .
+    git commit -m "Add comprehensive .gitignore to exclude large files"
+    git push -u origin main
+    
+
