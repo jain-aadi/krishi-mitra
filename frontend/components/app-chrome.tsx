@@ -1,7 +1,6 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { Link, useLocation } from "react-router-dom"
 import { ReactNode } from "react"
 
 const navItems = [
@@ -14,7 +13,7 @@ const navItems = [
 ]
 
 export function AppChrome({ children }: { children: ReactNode }) {
-    const pathname = usePathname()
+    const { pathname } = useLocation()
     if (pathname === "/") {
         return <>{children}</>
     }
@@ -29,7 +28,7 @@ export function AppChrome({ children }: { children: ReactNode }) {
                         return (
                             <Link
                                 key={item.href}
-                                href={item.href}
+                                to={item.href}
                                 className={`px-4 py-3 hover:bg-accent ${isActive ? "font-medium text-primary" : "text-foreground"}`}
                             >
                                 {item.label}

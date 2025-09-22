@@ -4,6 +4,7 @@ import { useState } from "react"
 import LocationButton from "@/components/location-button"
 import { ChatScreen } from "@/components/chat-screen"
 import { translations } from "@/lib/translations"
+import { postRecommend } from "@/src/lib/api"
 
 export default function ChatPage() {
     const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null)
@@ -57,20 +58,12 @@ export default function ChatPage() {
         setIsLoading(true)
 
         try {
-            const response = await fetch("/api/recommend", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    message,
-                    languageCode: language,
-                    latitude: location.latitude,
-                    longitude: location.longitude,
-                }),
+            const data = await postRecommend({
+                message,
+                languageCode: language,
+                latitude: location.latitude,
+                longitude: location.longitude,
             })
-
-            const data = await response.json()
 
             const botMessage = {
                 id: Date.now() + 1,

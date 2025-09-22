@@ -1,10 +1,10 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useNavigate } from "react-router-dom"
 import LocationButton from "@/components/location-button"
 
 export default function HomePage() {
-  const router = useRouter()
+  const navigate = useNavigate()
 
   const handleLocationSet = (coords: { latitude: number; longitude: number }) => {
     try {
@@ -12,7 +12,7 @@ export default function HomePage() {
     } catch (e) {
       // ignore storage errors
     }
-    router.push("/home")
+    navigate("/home")
   }
 
   return (
