@@ -13,6 +13,8 @@ export default defineConfig({
     port: 5173,
     host: true,
   },
+  // Move Vite cache out of node_modules to avoid OneDrive locking issues
+  cacheDir: path.resolve(__dirname, ".vite-cache"),
 });
 
 
